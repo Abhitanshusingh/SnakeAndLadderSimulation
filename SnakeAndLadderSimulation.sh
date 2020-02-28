@@ -2,9 +2,11 @@
 echo "Welcome to snake and ladder simulator"
 #CONSTANT VARIABLE
 #PLAYER1 STARTING POSITION
-PLAYER1=0
-while(($PLAYER1<100))
+player1=0
+while(($player1<100))
 do
+	#PREVIOUS POSITION
+	previous_position=$player1
 	#GENERATING RANDOM VALUE 1 TO 6
 	dice=$((RANDOM%6+1))
 	#GENERATING RANDOM VALUE TO CHECK
@@ -12,25 +14,29 @@ do
 	case $CheckOption in
 		1)
 			#NO PLAYER
-			PLAYER1=$PLAYER1
-			echo "Player in same position: $PLAYER1"
+			player1=$player1
+			echo "Player in same position: $player1"
 			;;
-
 		2)
 			#PLAYER MOVES AHEAD
-			PLAYER1=$(($PLAYER1+$dice))
-			echo "Player move ahead  in position: $PLAYER1"
+			player1=$(($player1+$dice))
+			if(($player1>100))
+         then
+            player1=$previous_position
+         fi
+			echo "Player move ahead  in position: $player1"
 			;;
 		3)
 			#PLAYER MOVES BEHIND
-			PLAYER1=$(($PLAYER1-$dice))
-			echo "Player move behind in position: $PLAYER1"
+			player1=$(($player1-$dice))
+			echo "Player move behind in position: $player1"
 			#WHEN PLAYER IS LESS THEN 0
-			if(($PLAYER1<0))
-      	then
-         	PLAYER1=0
+			if(($player1<0))
+			then
+				player1=0
 			fi
 			;;
+
 	esac
 
 done
