@@ -21,7 +21,7 @@ case $CheckOption in
 		echo "Player move ahead  in position: $PLAYER1"
 		;;
 	3)
-		#PLAYUER MOVES BEHIND
+		#PLAYER MOVES BEHIND
 		PLAYER1=$(($PLAYER-$dice))
 		echo "Player move behind in position: $PLAYER1"
 		;;
